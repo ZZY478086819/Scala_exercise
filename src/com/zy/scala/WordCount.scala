@@ -19,5 +19,10 @@ object WordCount {
     //5.对每个分组的元素进行聚合
     val result  = map.map(x=>(x._1,x._2.length))
     println(result) //map(ww -> 4, zzy -> 2, zy -> 1, zl -> 1, zs -> 1, cl -> 2, jj -> 3)
+
+
+    //第二种方法
+    val tupleToInt = arr.map(x=>x.split(",")).flatten.map(x=>(x,1)).groupBy(x=>x).map(x=>(x._1,x._2.length))
+    println(tupleToInt.toArray.sortWith((x,y)=>x._2>y._2).reverse)
   }
 }
